@@ -1,0 +1,58 @@
+# Python compiles
+**/__pycache__/
+*.pyc
+
+# Java compiles
+*.class
+
+# C++ compiles
+*.bin
+*.o
+*.out
+*.exe
+main
+
+# Visual Studio user files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.env
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+[Bb]uild/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Aa][Rr][Mm]64[Ee][Cc]/
+bld/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+**/[Bb]in/
+**/[Bb]uild/
+**/[Oo]ut/
+
+
+# Visual Studio History (VSHistory) files
+.vshistory/
+
+# VS Code files for those working on multiple tools
+**/.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
