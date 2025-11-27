@@ -32,7 +32,7 @@ Program ini juga memanfaatkan fungsi JOIN pada database SQL untuk menggabungkan 
 
 ## Alur jalan program
 
-Program ini menyediakan antarmuka berupa webpage yang bisa dibuka oleh user (misal: manager race track / event organizer). Konfigurasi koneksi terhadap database dapat dilakukan dengan mengubah file `Database.php` pada direktori `model`.
+Program ini menyediakan antarmuka berupa webpage yang bisa dibuka oleh user (misal: manager gaming lounge / event organizer). Konfigurasi koneksi terhadap database dapat dilakukan dengan mengubah file `Database.php` pada direktori `model`.
 
 Masing-masing tabel telah mendukung CRUD, yaitu membuat data baru, membaca kumpulan data dalam tabel, merubah / memperbaharui data yang ada, serta menghapus data yang ada.
 
