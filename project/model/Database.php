@@ -59,21 +59,21 @@ class Database {
     }
 
     // Mengambil semua hasil dari query sebagai array asosiatif
-    public function getAllResult() {
+    public function getAllResult($assoc = PDO::FETCH_ASSOC) {
         // kalo gak ada result, return array kosong
         if ($this->result === null) {
             return [];
         }
-        return $this->result->fetchAll(PDO::FETCH_ASSOC);
+        return $this->result->fetchAll($assoc);
     }
 
     // Mengambil satu hasil dari query satu id sebagai array asosiatif
-    public function getSingleResult() {
+    public function getSingleResult($assoc = PDO::FETCH_ASSOC) {
         // kalo gak ada result, return array kosong
         if ($this->result === null) {
             return [];
         }
-        return $this->result->fetch(PDO::FETCH_ASSOC);
+        return $this->result->fetch($assoc);
     }
 
     // Method untuk menutup koneksi database
