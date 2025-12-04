@@ -36,7 +36,7 @@ Program ini menyediakan antarmuka berupa webpage yang bisa dibuka oleh user (mis
 
 Masing-masing tabel telah mendukung CRUD, yaitu membuat data baru, membaca kumpulan data dalam tabel, merubah / memperbaharui data yang ada, serta menghapus data yang ada.
 
-
 ## Preview operasional program
 
-_TBD_
+https://github.com/user-attachments/assets/bcb0feda-0f0e-4b55-926f-de877944a030
+
