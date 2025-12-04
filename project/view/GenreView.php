@@ -91,9 +91,21 @@ class GenreView {
     }
 
     public function postActions($post_data=[]) {
-        // TODO: CUD functions
+        if (isset($post_data["add_genre"])) {
+            $this->viewmodel->addData([
+                "nama" => $post_data["genre_name"],
+                "rekomendasi_usia" => $post_data["genre_rekomendasi_usia"]
+            ]);
+        } elseif (isset($post_data["edit_genre"])) {
+            $this->viewmodel->updateData($post_data["genre_id"], [
+                "nama" => $post_data["genre_name"],
+                "rekomendasi_usia" => $post_data["genre_rekomendasi_usia"]
+            ]);
+        } elseif (isset($post_data["delete_genre"])) {
+            $this->viewmodel->deleteData($post_data["genre_id"]);
+        }
     }
-    
+
     public function render($action, $dataId=null) {
         switch ($action) {
             case "add":

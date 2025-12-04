@@ -51,6 +51,8 @@ switch ($page) {
                 }
             }
             $view->postActions($filteredPostData);
+        } elseif (method_exists($view, "postActions") && $action == "delete" && isset($dataId)) {
+            // special function for delete
         }
 
         $body = $view->render($action, $dataId);
