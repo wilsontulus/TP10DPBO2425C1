@@ -10,6 +10,8 @@ include_once("view/GameView.php");
 include_once("view/PemainView.php");
 include_once("view/EventView.php");
 
+$action = $_GET["action"] ?? "list";
+$dataId = $_GET["id"] ?? null;
 $page = $_GET["page"] ?? "home";
 $title = "Gaming Lounge";
 $body = "";
@@ -40,7 +42,7 @@ switch ($page) {
 
     // Render the page if the controller is assigned & available
     if (isset($view)) {
-        $body = $view->render();
+        $body = $view->render($action, $dataId);
     }
 
 ?>

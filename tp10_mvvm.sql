@@ -54,23 +54,23 @@ CREATE INDEX IF NOT EXISTS idx_event_nama ON event(nama);
 -- Insert data
 
 INSERT INTO genre (nama, rekomendasi_usia) VALUES
-('First-Person Shooter (FPS)', 'Dewasa (17+)'),
+('First-Person Shooter (FPS)', 'Remaja (13+)'),
 ('Role-Playing Game (RPG)', 'Remaja (13+)'),
 ('Multiplayer Online Battle Arena (MOBA)', 'Remaja (13+)'),
 ('Fighting', 'Remaja (13+)'),
 ('Sports', 'Semua Umur'),
 ('Racing', 'Semua Umur'),
-('Survival Horror', 'Dewasa (18+)'),
+('Survival Horror', 'Dewasa (17+)'),
 ('Real-Time Strategy (RTS)', 'Remaja (13+)'),
-('Battle Royale', 'Remaja (16+)'),
+('Battle Royale', 'Remaja (13+)'),
 ('Sandbox', 'Semua Umur'),
 ('Puzzle', 'Semua Umur'),
 ('Simulation', 'Semua Umur'),
 ('Action-Adventure', 'Remaja (13+)'),
 ('Platformer', 'Semua Umur'),
 ('Rhythm', 'Semua Umur'),
-('Visual Novel', 'Dewasa (17+)'),
-('Stealth', 'Dewasa (17+)'),
+('Visual Novel', 'Remaja (13+)'),
+('Stealth', 'Remaja (13+)'),
 ('Card Game (Non Gambling)', 'Semua Umur'),
 ('Massively Multiplayer Online (MMO)', 'Remaja (13+)'),
 ('Party Game', 'Semua Umur');
