@@ -109,7 +109,23 @@ class GameView {
     }
 
     public function postActions($post_data=[]) {
-        // TODO: CUD functions
+        if (isset($post_data["add_game"])) {
+            $this->viewmodel->addData([
+                "nama" => $post_data["game_name"],
+                "genre_id" => $post_data["game_genre"],
+                "platform" => $post_data["game_platform"],
+                "tahun_rilis" => $post_data["game_release_year"]
+            ]);
+        } elseif (isset($post_data["edit_game"])) {
+            $this->viewmodel->updateData($post_data["game_id"], [
+                "nama" => $post_data["game_name"],
+                "genre_id" => $post_data["game_genre"],
+                "platform" => $post_data["game_platform"],
+                "tahun_rilis" => $post_data["game_release_year"]
+            ]);
+        } elseif (isset($post_data["delete_game"])) {
+            $this->viewmodel->deleteData($post_data["game_id"]);
+        }
     }
     
     public function render($action, $dataId=null) {

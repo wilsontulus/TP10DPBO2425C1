@@ -91,21 +91,25 @@ class EventView {
             $newFormSection = $formSection->getInputSection("Nama", "text", "event_name", "", true);
             $newFormSection .= $formSection->getSelectSection("Pemimpin", "event_leader", $pemainList, null, true);
             $newFormSection .= $formSection->getSelectSection("Game", "event_game", $gameList, null, true);
-            $newFormSection .= $formSection->getInputSection("Waktu Acara", "date", "event_waktu_acara", "", true, false);
+            $newFormSection .= $formSection->getInputSection("Tanggal Acara", "date", "event_tanggal_acara", "", true, false);
+            $newFormSection .= $formSection->getInputSection("Waktu Acara", "time", "event_waktu_acara", "", true, false);
 
             $newWebPage = str_replace("PHP_FORMS_COLLECTION", $newFormSection, $newWebPage);
         } elseif ($action == "edit") {
             $data = $this->viewmodel->getDataById($dataId);
             if (isset($dataId) && isset($data) && $data) {
                 $newWebPage = str_replace("PHP_PAGE_TITLE", "Ubah Data Event", $newWebPage);
-                $newWebPage = str_replace("PHP_FORM_POST_NAME", "edit_player", $newWebPage);
+                $newWebPage = str_replace("PHP_FORM_POST_NAME", "edit_event", $newWebPage);
                 $newWebPage = str_replace("PHP_SUBMIT_BUTTON_NAME", "Update Event", $newWebPage);
 
                 $newFormSection = $formSection->getInputSection("ID", "text", "event_id", $data->getId(), true, true);
                 $newFormSection .= $formSection->getInputSection("Nama", "text", "event_name", $data->getNama(), true);
                 $newFormSection .= $formSection->getSelectSection("Pemimpin", "event_leader", $pemainList, $data->getIdPemimpin(), true);
                 $newFormSection .= $formSection->getSelectSection("Game", "event_game", $gameList, $data->getIdGame(), true);
-                $newFormSection .= $formSection->getInputSection("Waktu Acara", "date", "event_waktu_acara", $data->getWaktuEvent(), true, false);
+
+                $tanggalEvent = explode(" ", $data->getWaktuEvent(), 2);
+                $newFormSection .= $formSection->getInputSection("Tanggal Acara", "date", "event_tanggal_acara", $tanggalEvent[0], true, false);
+                $newFormSection .= $formSection->getInputSection("Waktu Acara", "time", "event_waktu_acara", $tanggalEvent[1], true, false);
 
                 $newWebPage = str_replace("PHP_FORMS_COLLECTION", $newFormSection, $newWebPage);
             } else {
@@ -120,7 +124,23 @@ class EventView {
     }
 
     public function postActions($post_data=[]) {
-        // TODO: CUD functions
+        if (isset($post_data["add_event"])) {
+            $this->viewmodel->addData([
+                "nama" => $post_data["event_name"],
+                "id_pemimpin" => $post_data["event_leader"],
+                "id_game" => $post_data["event_game"],
+                "waktu_event" => "$post_data[event_tanggal_acara] $post_data[event_waktu_acara]"
+            ]);
+        } elseif (isset($post_data["edit_event"])) {
+            $this->viewmodel->updateData($post_data["event_id"], [
+                "nama" => $post_data["event_name"],
+                "id_pemimpin" => $post_data["event_leader"],
+                "id_game" => $post_data["event_game"],
+                "waktu_event" => "$post_data[event_tanggal_acara] $post_data[event_waktu_acara]"
+            ]);
+        } elseif (isset($post_data["delete_event"])) {
+            $this->viewmodel->deleteData($post_data["event_id"]);
+        }
     }
 
     public function render($action, $dataId=null) {

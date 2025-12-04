@@ -50,9 +50,16 @@ switch ($page) {
                     $filteredPostData[$postDataKey] = $postDataValue;
                 }
             }
+
             $view->postActions($filteredPostData);
         } elseif (method_exists($view, "postActions") && $action == "delete" && isset($dataId)) {
             // special function for delete
+            $filteredPostData = [
+                "delete_" . substr($page, 0, -1) => "",
+                substr($page, 0, -1) . "_id" => $dataId
+            ];
+
+            $view->postActions($filteredPostData);
         }
 
         $body = $view->render($action, $dataId);

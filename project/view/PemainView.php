@@ -89,7 +89,7 @@ class PemainView {
             $newWebPage = str_replace("PHP_SUBMIT_BUTTON_NAME", "Submit Pemain", $newWebPage);
             
             $newFormSection = $formSection->getInputSection("Nama", "text", "player_name", "", true);
-            $newFormSection = $formSection->getInputSection("Asal Daerah", "text", "player_asal_daerah", "", true);
+            $newFormSection .= $formSection->getInputSection("Asal Daerah", "text", "player_asal_daerah", "", true);
 
             $newFormSection .= $formSection->getSelectSection("Genre Favorit", "player_genre", $genreList, null, true);
             $newFormSection .= $formSection->getSelectSection("Game Favorit", "player_game", $gameList, null, true);
@@ -116,15 +116,31 @@ class PemainView {
                 $newWebPage = file_get_contents("view/template/db_form_notfound.html");
                 $newWebPage = str_replace("PHP_CANCEL_BUTTON_LOCATION", "?page=players", $newWebPage);
             }
-            
-
         }
 
         return $newWebPage;
     }
 
     public function postActions($post_data=[]) {
-        // TODO: CUD functions
+        if (isset($post_data["add_player"])) {
+            $this->viewmodel->addData([
+                "nama" => $post_data["player_name"],
+                "asal_daerah" => $post_data["player_asal_daerah"],
+                "genre_favorit" => $post_data["player_genre"],
+                "game_favorit" => $post_data["player_game"],
+                "jumlah_menang" => $post_data["player_jumlah_menang"]
+            ]);
+        } elseif (isset($post_data["edit_player"])) {
+            $this->viewmodel->updateData($post_data["player_id"], [
+                "nama" => $post_data["player_name"],
+                "asal_daerah" => $post_data["player_asal_daerah"],
+                "genre_favorit" => $post_data["player_genre"],
+                "game_favorit" => $post_data["player_game"],
+                "jumlah_menang" => $post_data["player_jumlah_menang"]
+            ]);
+        } elseif (isset($post_data["delete_player"])) {
+            $this->viewmodel->deleteData($post_data["player_id"]);
+        }
     }
     
     public function render($action, $dataId=null) {
