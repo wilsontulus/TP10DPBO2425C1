@@ -107,6 +107,11 @@ class GameView {
 
         return $newWebPage;
     }
+
+    public function postActions($post_data=[]) {
+        // TODO: CUD functions
+    }
+    
     public function render($action, $dataId=null) {
         switch ($action) {
             case "add":

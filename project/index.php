@@ -42,6 +42,17 @@ switch ($page) {
 
     // Render the page if the controller is assigned & available
     if (isset($view)) {
+        if (method_exists($view, "postActions") && isset($_POST) && sizeof($_POST) > 0) {
+            // Filter incoming POST
+            $filteredPostData = [];
+            foreach ($_POST as $postDataKey => $postDataValue) {
+                if (str_contains($postDataKey, substr($page, 0, -1))) {
+                    $filteredPostData[$postDataKey] = $postDataValue;
+                }
+            }
+            $view->postActions($filteredPostData);
+        }
+
         $body = $view->render($action, $dataId);
     }
 
