@@ -9,6 +9,12 @@ include_once("model/TabelGenre.php");
 include_once("model/Game.php");
 include_once("model/TabelGame.php");
 
+if (session_status() == PHP_SESSION_NONE) { 
+    session_start([
+        'cookie_lifetime' => 86400
+    ]); 
+} 
+
 class PemainViewModel {
     private $list = [], $listGenre = [], $listGame = [];
     private $model, $modelGenre, $modelGame;
@@ -37,6 +43,9 @@ class PemainViewModel {
             );
             $this->list[] = $newData;
         }
+
+        // Update last time untuk ajax ke status.php
+        $_SESSION["player_lastUpdated"] = time();
     }
 
     public function syncForeignList() {

@@ -1,5 +1,14 @@
 <?php
 
+// Session start For Ajax timer
+if (session_status() == PHP_SESSION_NONE) { 
+    session_start([
+        'cookie_lifetime' => 86400
+    ]); 
+} 
+
+$_SESSION["lastAccessed"] = time();
+
 // Views
 
 include_once("view/HomepageView.php");

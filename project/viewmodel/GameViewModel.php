@@ -6,6 +6,12 @@ include_once("model/TabelGame.php");
 include_once("model/Genre.php");
 include_once("model/TabelGenre.php");
 
+if (session_status() == PHP_SESSION_NONE) { 
+    session_start([
+        'cookie_lifetime' => 86400
+    ]); 
+} 
+
 class GameViewModel {
     private $list = [];
     private $listGenre = [];
@@ -34,6 +40,9 @@ class GameViewModel {
             );
             $this->list[] = $newData;
         }
+
+        // Update last time untuk ajax ke status.php
+        $_SESSION["game_lastUpdated"] = time();
     }
 
     public function syncListGenre() {

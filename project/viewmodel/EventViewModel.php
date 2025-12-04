@@ -9,6 +9,12 @@ include_once("model/TabelPemain.php");
 include_once("model/Game.php");
 include_once("model/TabelGame.php");
 
+if (session_status() == PHP_SESSION_NONE) { 
+    session_start([
+        'cookie_lifetime' => 86400
+    ]); 
+} 
+
 class EventViewModel {
     private $list = [], $listPemain = [], $listGame = [];
     private $model, $modelPemain, $modelGame;
@@ -36,6 +42,9 @@ class EventViewModel {
             );
             $this->list[] = $newData;
         }
+
+        // Update last time untuk ajax ke status.php
+        $_SESSION["event_lastUpdated"] = time();
     }
 
     public function syncForeignList() {

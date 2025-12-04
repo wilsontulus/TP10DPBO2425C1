@@ -16,6 +16,7 @@ class GenreView {
         $newWebPage = file_get_contents("view/template/db_list.html");
 
         // Ubah nama dan destination
+        $newWebPage = str_replace("PHP_TABLE_NAME", "genre", $newWebPage);
         $newWebPage = str_replace("PHP_PAGE_TITLE", "List Genre", $newWebPage);
         $newWebPage = str_replace(
             "PHP_ADDBUTTON_NAME", "Tambah Genre Baru...", $newWebPage);

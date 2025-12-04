@@ -3,6 +3,12 @@
 include_once("model/Genre.php");
 include_once("model/TabelGenre.php");
 
+if (session_status() == PHP_SESSION_NONE) { 
+    session_start([
+        'cookie_lifetime' => 86400
+    ]); 
+} 
+
 class GenreViewModel {
     private $list = [];
     private $model;
@@ -25,6 +31,9 @@ class GenreViewModel {
             );
             $this->list[] = $newData;
         }
+
+        // Update last time untuk ajax ke status.php
+        $_SESSION["genre_lastUpdated"] = time();
     }
 
     public function getAllData() {

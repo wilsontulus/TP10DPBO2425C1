@@ -16,6 +16,7 @@ class PemainView {
         $newWebPage = file_get_contents("view/template/db_list.html");
 
         // Ubah nama dan destination
+        $newWebPage = str_replace("PHP_TABLE_NAME", "player", $newWebPage);
         $newWebPage = str_replace("PHP_PAGE_TITLE", "List Pemain", $newWebPage);
         $newWebPage = str_replace(
             "PHP_ADDBUTTON_NAME", "Tambah Pemain Baru...", $newWebPage);
@@ -148,6 +149,9 @@ class PemainView {
             case "add":
             case "edit":
                 $this->webpage = $this->getFormPage($action, $dataId);
+                break;
+            case "status":
+                $this->webpage = $this->getStatus();    
                 break;
             case "list":
             case "delete":

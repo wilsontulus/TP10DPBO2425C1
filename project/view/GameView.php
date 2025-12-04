@@ -16,6 +16,7 @@ class GameView {
         $newWebPage = file_get_contents("view/template/db_list.html");
 
         // Ubah nama dan destination
+        $newWebPage = str_replace("PHP_TABLE_NAME", "game", $newWebPage);
         $newWebPage = str_replace("PHP_PAGE_TITLE", "List Game", $newWebPage);
         $newWebPage = str_replace(
             "PHP_ADDBUTTON_NAME", "Tambah Game Baru...", $newWebPage);

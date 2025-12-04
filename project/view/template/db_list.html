@@ -20,3 +20,35 @@
         </tbody>
     </table>
 </div>
+<script>
+    // auto update tiap data update
+    const checkInterval = 1000; // in miliseconds
+    const table_name = "PHP_TABLE_NAME"
+    const key_name = table_name + "_lastUpdated"
+
+    function checkStatusAndRefresh() {
+    fetch("status.php", { cache: "no-store" })
+        .then(response => response.json())
+        .then(data => {
+        const serverTime = data[key_name]; // Unix timestamp in seconds
+        const currentTime = Math.floor(Date.now() / 1000); // seconds
+
+        const diff = currentTime - serverTime;
+
+        console.log("Server " + key_name + ":", serverTime);
+        console.log("Current time:", currentTime);
+        console.log("Difference:", diff, "seconds");
+
+        if (diff <= 5) {
+            //console.log("Last accessed is within 5 seconds — refreshing page...");
+           // window.location.reload();
+        }
+        })
+        .catch(error => {
+        console.error("Failed to fetch /status.php:", error);
+        });
+    }
+
+    // Polling loop
+    setInterval(checkStatusAndRefresh, checkInterval);
+</script>
