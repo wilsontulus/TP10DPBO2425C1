@@ -108,15 +108,18 @@ class PemainViewModel {
     // Metode DML simpel saja
 
     public function addData($data = []) {
-        return $this->model->addData($data);
+        $this->model->addData($data);
+        $this->syncList();
     }
 
     public function updateData($id, $data = []) {
-        return $this->model->updateData($id, $data);
+        $this->model->updateData($id, $data);
+        $this->syncList();
     }
 
     public function deleteData($id) {
-        return $this->model->deleteData($id);
+        $this->model->deleteData($id);
+        $this->syncList();
     }
 }
 
