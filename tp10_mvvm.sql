@@ -117,9 +117,9 @@ INSERT INTO pemain (nama, asal_daerah, genre_favorit, game_favorit, jumlah_menan
 ('Nadia Hutagalung','Palembang', 13, 16, 1);
 
 INSERT INTO event (nama, id_pemimpin, id_game, waktu_event) VALUES
-('Valorant Community Cup Season 1', 4, 1, '2023-11-15 13:00:00'),
-('Mabar Santai Mobile Legends', 3, 4, '2023-11-20 19:00:00'),
-('Sunday Tekken Tournament', 7, 6, '2023-11-26 10:00:00'),
-('FIFA 24 Weekend League', 6, 8, '2023-12-02 14:00:00'),
-('Minecraft Creative Build Battle', 11, 13, '2023-12-10 16:00:00'),
-('Horror Night: Resident Evil Run', 12, 10, '2023-10-31 22:00:00');
+('Valorant Community Cup Season 1', 4, 1, '2025-11-15 13:00:00'),
+('Mabar Santai Mobile Legends', 3, 4, '2025-11-20 19:00:00'),
+('Sunday Tekken Tournament', 7, 6, '2025-11-26 10:00:00'),
+('FIFA 24 Weekend League', 6, 8, '2025-12-02 14:00:00'),
+('Minecraft Creative Build Battle', 11, 13, '2025-12-12 16:00:00'),
+('New Year Eve Night: Resident Evil Run', 12, 10, '2025-12-31 22:00:00');
